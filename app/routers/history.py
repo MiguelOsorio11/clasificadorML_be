@@ -6,7 +6,9 @@ from datetime import datetime
 
 router = APIRouter(prefix="/api", tags=["history"])
 
-@router.get("/history", response_model=HistoryResponse)
+@router.get("/history",  summary="Listar predicciones anteriores",
+    description="Devuelve el historial de predicciones almacenadas en history.json.",
+  response_model=HistoryResponse)
 def history(offset: int = Query(0, ge=0), limit: int = Query(20, ge=1, le=100)):
     total, rows = list_history(offset, limit)
     items = [

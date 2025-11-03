@@ -6,7 +6,9 @@ import json
 router = APIRouter(prefix="/api", tags=["metrics"])
 ARTS_DIR = Path(__file__).resolve().parents[2] / "artifacts"
 
-@router.get("/metrics", response_model=MetricsResponse)
+@router.get("/metrics", summary="Obtener métricas del modelo",
+    description="Devuelve las métricas del modelo entrenado (accuracy, matriz de confusión, etc.)",
+  response_model=MetricsResponse)
 def get_metrics():
     p = ARTS_DIR / "metrics.json"
     if not p.exists():

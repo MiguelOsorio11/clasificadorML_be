@@ -5,7 +5,9 @@ from ..models.schemas import PredictResponse
 
 router = APIRouter(prefix="/api", tags=["predict"])
 
-@router.post("/predict", response_model=PredictResponse)
+@router.post("/predict", summary="Clasificar imagen con modelo TensorFlow",
+    description="Recibe un archivo de imagen y devuelve la clase predicha y las probabilidades top-k.",
+  response_model=PredictResponse)
 async def predict(image: UploadFile = File(...)):
     try:
         image_bytes = await image.read()

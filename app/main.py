@@ -2,7 +2,13 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .routers import predict, metrics, history
 
-app = FastAPI(title="Image Classification API", version="1.0.0")
+app = FastAPI(title="Image Classification API",
+    description="API para clasificar imágenes usando un modelo TensorFlow entrenado.",
+    version="1.0.0",
+    contact={
+        "name": "Paulo Cesar Albis - Miguel Angel Osorio",
+        "url": "https://github.com/PauloCesarAlvis",
+    },)
 
 # Ajusta ORIGINS al dominio/puerto del frontend
 origins = [
